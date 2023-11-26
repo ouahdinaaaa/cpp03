@@ -11,11 +11,11 @@
 # **************************************************************************** #
 
 
-NAME = Fixeeed
+NAME = ClapTrap
 
 SRC_DIR = ./
 SRCS = main.cpp\
-		Fixed.cpp\
+		ClapTrap.cpp\
 
 OBJS = ${SRCS:.cpp=.o}
 CC = c++

@@ -13,9 +13,14 @@
 # include "ClapTrap.hpp"
 
 
-ClapTrap::ClapTrap(std::string name) name (name), hitPoint(10), energyPoint(10), attckDamage(10) 
+ClapTrap:: ClapTrap()
 {
     std::cout << "created creator" << std::endl;
+}
+
+ClapTrap::ClapTrap(std::string name): name(name), hitPoint(10), energyPoint(10), attckDamage(10) 
+{
+    std::cout << "created creator update: " << std::endl;
 }
 
 ClapTrap::~ClapTrap()
@@ -25,7 +30,13 @@ ClapTrap::~ClapTrap()
 
 void    ClapTrap::attack(const std::string &target)
 {
-    std::cout << "attack" << std::endl;
+    if (this->energyPoint > 0 && this->hitPoint > 0)
+    {
+        std::cout << "ClapTrap : "  << target << std::endl;
+        this->energyPoint--;
+    }
+    else
+        std::cout << "ClapTrap : " << target << " We have not PointEnergy : " << std::endl; 
 }
 
 void    ClapTrap::takeDamage(unsigned int amount)
@@ -34,11 +45,12 @@ void    ClapTrap::takeDamage(unsigned int amount)
     {
         this->hitPoint -= amount;
         if (this->hitPoint > 0)
-            std::cout << "ClapTrap" << this->name << "takes" << amount << "damage attack !!!" << std::endl; 
+            std::cout << "ClapTrap : " << this->name << " takes : " << amount << " : damage attack !!!" << std::endl; 
         else
-            std::cout << "ClapTrap" << this->name << "is now defeat we have not point of healthy" << std::endl;
+            std::cout << "ClapTrap : " << this->name << " is now defeat we have not point of healthy" << std::endl;
     }
-    std::cout << "ClapTrap" << this->name << "we can't take damage !!!!" << std::endl;
+    else
+        std::cout << "ClapTrap : " << this->name << " we can't take damage !!!!" << std::endl;
 }
 
 void    ClapTrap::beRepaired(unsigned int amount)
@@ -47,9 +59,9 @@ void    ClapTrap::beRepaired(unsigned int amount)
     {
         std::cout << "be Repair" << std::endl;
         this->hitPoint += amount;
-        std::cout << "ClapTrap" << this->name << "is repared for : " << this->hitPoint;
-        this->energyPOint--;
+        std::cout << "ClapTrap : " << this->name << "is repared for : " << this->hitPoint << std::endl;
+        this->energyPoint--;
     }
     else
-        std::cout << "ClapTrap" << name << "can't reapired becoup have not point of energy" << std::endl;
+        std::cout << "ClapTrap : " << name << "can't reapired becoup have not point of energy" << std::endl;
 }

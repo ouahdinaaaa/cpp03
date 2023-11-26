@@ -17,6 +17,6 @@ int main(void)
     ClapTrap    you("ouahdina");
     you.attack("slide");
     you.takeDamage(5);
-    you.beRepaired(2);
+    you.beRepaired(4);
 
 }
