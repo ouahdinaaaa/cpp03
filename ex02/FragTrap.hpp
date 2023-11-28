@@ -1,34 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   SavTrap.hpp                                        :+:      :+:    :+:   */
+/*   FralTrap.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ayael-ou <ayael-ou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/28 07:42:02 by ayael-ou          #+#    #+#             */
-/*   Updated: 2023/11/28 07:42:02 by ayael-ou         ###   ########.fr       */
+/*   Created: 2023/11/28 09:46:16 by ayael-ou          #+#    #+#             */
+/*   Updated: 2023/11/28 09:46:16 by ayael-ou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
- #ifndef SCAVTRAP_HPP
- #define SCAVTRAP_HPP
+#ifndef FLAGTRAP_HPP
+#define FLAGTRAP_HPP    
 
 #include "ClapTrap.hpp"
 
-class   ScavTrap : public ClapTrap
+class FlagTrap : ClapTrap
 {
-    private:
+    private :
 
-    public:
+    public :
 
-    ScavTrap();
-    ~ScavTrap();
-    ScavTrap(std::string name);
-    ScavTrap(ScavTrap &object);
-    ScavTrap   &operator=(const ScavTrap &Trap);
+    FlagTrap();
+    FlagTrap(std::string name);
+    // Flagtrap();
+    ~FlagTrap();
+    void    hightFivesGuys(void);
 
-    void        guardGate();
 };
 
-
- #endif
+#endif

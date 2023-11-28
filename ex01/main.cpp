@@ -5,13 +5,12 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: ayael-ou <ayael-ou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/26 23:50:02 by ayael-ou          #+#    #+#             */
-/*   Updated: 2023/11/26 23:50:02 by ayael-ou         ###   ########.fr       */
+/*   Created: 2023/11/28 08:11:13 by ayael-ou          #+#    #+#             */
+/*   Updated: 2023/11/28 08:11:13 by ayael-ou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ClapTrap.hpp"
-
+#include "ScavTrap.hpp"
 
 void	main_print_banner(std::string title);
 
@@ -19,52 +18,53 @@ int	main ( void )
 {
 	main_print_banner("A attack B");
 	{
-		ClapTrap a("A");
-		ClapTrap b("B");
+		ScavTrap a("A");
+		ScavTrap b("B");
 		std::cout << std::endl;
 		a.attack("B");
 		std::cout << std::endl;
+
 	}
 	main_print_banner("A attack itself");
 	{
-		ClapTrap a("A");
+		ScavTrap a("A");
 		std::cout << std::endl;
 		a.attack("A");
 		std::cout << std::endl;
 	}
 	main_print_banner("A attack and other namesake");
 	{
-		ClapTrap a("A");
-		ClapTrap b("A");
+		ScavTrap a("A");
+		ScavTrap b("A");
 		std::cout << std::endl;
 		a.attack("A");
 		std::cout << std::endl;
 	}
 	main_print_banner("A attack empty name");
 	{
-		ClapTrap a("A");
-		ClapTrap b("");
+		ScavTrap a("A");
+		ScavTrap b("");
 		std::cout << std::endl;
 		a.attack("");
 		std::cout << std::endl;
 	}
 	main_print_banner("A take amount of damage greater than your health points and with zero health points try attack B");
 	{
-		ClapTrap a("A");
-		ClapTrap b("B");
+		ScavTrap a("A");
+		ScavTrap b("B");
 
 		std::cout << std::endl;
-		a.takeDamage(50);
+		a.takeDamage(150);
 		a.attack("B");
 		std::cout << std::endl;
 	}
 	main_print_banner("A try attack B 11 times. Last time should has not enough energy to attack");
 	{
-		ClapTrap a("A");
-		ClapTrap b("B");
+		ScavTrap a("A");
+		ScavTrap b("B");
 
 		std::cout << std::endl;
-		for (int i = 0; i < 11; i++)
+		for (int i = 0; i < 51; i++)
 			a.attack("B");
 		main_print_banner("After that, A try repair itself but should has not enough energy to repaired");
 		a.beRepaired(50);
@@ -72,27 +72,27 @@ int	main ( void )
 	}
 	main_print_banner("A try repair more than max health");
 	{
-		ClapTrap a("A");
-		ClapTrap b("B");
+		ScavTrap a("A");
+		ScavTrap b("B");
 
 		std::cout << std::endl;
-		a.beRepaired(50);
+		a.beRepaired(150);
 		std::cout << std::endl;
 	}
 	main_print_banner("This test check if possible to attack bot destroyed previously");
 	{
-		ClapTrap a("A");
+		ScavTrap a("A");
 	
 		std::cout << std::endl;
-		ClapTrap("B").attack("A");
+		ScavTrap("B").attack("A");
 		std::cout << std::endl;
 		a.attack("B");
 		std::cout << std::endl;
 	}
 	main_print_banner("Chek copy constructor");
 	{
-		ClapTrap a("A");
-		ClapTrap b(a);
+		ScavTrap a("A");
+		ScavTrap b(a);
 	
 		std::cout << std::endl;
 		a.attack("A");
@@ -100,14 +100,33 @@ int	main ( void )
 	}
 	main_print_banner("Chek copy operator");
 	{
-		ClapTrap a("A");
-		ClapTrap b("B");
+		ScavTrap a("A");
+		ScavTrap b("B");
+		b  = a;
+	
+		std::cout << std::endl;
+		a.attack("A");
+		std::cout << std::endl;
+	}
+	main_print_banner("Test guardGate");
+	{
+		ScavTrap a("A");
+		std::cout << std::endl;
+		a.guardGate();
+		std::cout << std::endl;
+	}
+	main_print_banner("Test virtual method berepaired");
+	{
+		ClapTrap *a = new ScavTrap("A");
+		ScavTrap b("B");
+		std::cout << std::endl;
+		a->beRepaired(150);
+		std::cout << std::endl;
+		b.attack("A");
+		a->beRepaired(150);
+		std::cout << std::endl;
 
-		std::cout << std::endl;
-		b = a;
-		std::cout << std::endl;
-		a.attack("B");
-		std::cout << std::endl;
+		delete a;
 	}
 }
 

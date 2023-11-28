@@ -11,12 +11,12 @@
 # **************************************************************************** #
 
 
-NAME = ScavTrap
+NAME = FragTrap
 
 SRC_DIR = ./
 SRCS = main.cpp\
 		ClapTrap.cpp\
-		ScavTrap.cpp\
+		FlagTrap.cpp\
 
 OBJS = ${SRCS:.cpp=.o}
 CC = c++

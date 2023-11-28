@@ -1,34 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   SavTrap.hpp                                        :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ayael-ou <ayael-ou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/28 07:42:02 by ayael-ou          #+#    #+#             */
-/*   Updated: 2023/11/28 07:42:02 by ayael-ou         ###   ########.fr       */
+/*   Created: 2023/11/28 08:11:13 by ayael-ou          #+#    #+#             */
+/*   Updated: 2023/11/28 08:11:13 by ayael-ou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
- #ifndef SCAVTRAP_HPP
- #define SCAVTRAP_HPP
+#include "FlagTrap.hpp"
 
-#include "ClapTrap.hpp"
-
-class   ScavTrap : public ClapTrap
+int main()
 {
-    private:
+    FlagTrap Flag("Odin");
+    FlagTrap Flag2("Floki");
+    FlagTrap Flaag = Flag2;
+    Flag.attack("Floki");
+    Flag2.takeDamage(500);
+    Flag.beRepaired(10);
+    Flag.();
+    return 0;
+}
 
-    public:
-
-    ScavTrap();
-    ~ScavTrap();
-    ScavTrap(std::string name);
-    ScavTrap(ScavTrap &object);
-    ScavTrap   &operator=(const ScavTrap &Trap);
-
-    void        guardGate();
-};
-
-
- #endif
+// Change this main
+// voir pour attack
+// regler couleur and name of attribut et tout
